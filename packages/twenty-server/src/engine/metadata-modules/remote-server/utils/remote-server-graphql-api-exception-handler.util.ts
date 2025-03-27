@@ -18,7 +18,7 @@ export const remoteServerGraphqlApiExceptionHandler = (error: any) => {
           throw new UserInputError('Null value provided for a non-nullable field.');
         }
         throw new UserInputError(error.message);
-      //PIC  
+      //PIC  Update the remoteServerGraphqlApiExceptionHandler to handle cases where null values are passed to non-nullable fields.
       case RemoteServerExceptionCode.INVALID_REMOTE_SERVER_INPUT:
         throw new UserInputError(error.message);
       case RemoteServerExceptionCode.REMOTE_SERVER_MUTATION_NOT_ALLOWED:

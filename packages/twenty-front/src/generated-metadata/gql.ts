@@ -2,6 +2,10 @@
 import * as types from './graphql';
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
+//Ensure that the GraphQL schema correctly defines fields as non-nullable using the ! syntax
+
+
+
 /**
  * Map of all GraphQL operations in the project.
  *

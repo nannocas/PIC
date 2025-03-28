@@ -50,6 +50,19 @@ const MIGRATED_REST_METHODS = [
       driver: YogaDriver,
       imports: [GraphQLConfigModule],
       useClass: GraphQLConfigService,
+      //PIC: Use middleware to intercept and validate inputs globally before they reach resolvers
+      useFactory: async () => ({
+        autoSchemaFile: true, // Gera o esquema automaticamente
+        validateSchema: true, // Valida o esquema
+        formatError: (error) => {
+          // Personaliza erros de validação
+          if (error.message.includes('Expected non-nullable type')) {
+            return new Error('Null value provided for a non-nullable field.');
+          }
+          return error;
+        },
+      }),
+      //PIC: Use middleware to intercept and validate inputs globally before they reach resolvers
     }),
     TwentyORMModule,
     // Core engine module, contains all the core modules

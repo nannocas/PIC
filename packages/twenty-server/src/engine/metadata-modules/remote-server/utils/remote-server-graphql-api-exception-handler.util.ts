@@ -13,7 +13,7 @@ export const remoteServerGraphqlApiExceptionHandler = (error: any) => {
   if (error instanceof RemoteServerException) {
     switch (error.code) {
       case RemoteServerExceptionCode.INVALID_REMOTE_SERVER_INPUT:
-        if (error.message.includes('null value')) {
+        if (error.message.includes('Null value')) {
           throw new UserInputError('Null value provided for a non-nullable field.');
         }
         throw new UserInputError(error.message);
